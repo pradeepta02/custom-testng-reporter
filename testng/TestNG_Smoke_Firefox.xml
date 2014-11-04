@@ -1,0 +1,32 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Smoke Test Suite" verbose="1" parallel="tests" thread-count="4" configfailurepolicy="continue">
+
+	<listeners>
+		<listener class-name="samplereporter.HTMLReporter" />
+		<listener class-name="utils.BaseTest" />
+	</listeners>
+
+	<test name="Sample Test Class Windows7 Firefox 32.0">
+
+		<parameter name="os" value="windows" />
+		<parameter name="os_version" value="7" />
+		<parameter name="browser" value="firefox" />
+		<parameter name="browser_version" value="32.0" />
+		
+		<parameter name="expected_text" value="Hello There!"/>
+		
+		<groups>
+			<run>
+				<exclude name="regression" />
+				<include name="Smoke" />
+			</run>
+		</groups>
+
+		<classes>
+			<class name="uitests.smoke.SampleTestClass" />
+		</classes>
+
+	</test>
+
+</suite>
